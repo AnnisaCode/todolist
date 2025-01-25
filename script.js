@@ -1,6 +1,7 @@
 let tasks = [];
 let taskBeingEdited = null;
 
+// things
 function addTask() {
     const taskInput = document.getElementById("new-task");
     const taskDate = document.getElementById("task-date");
