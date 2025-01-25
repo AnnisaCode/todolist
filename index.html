@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <!-- Menambahkan link stylesheet CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Menambahkan link stylesheet Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <!-- Membuat form untuk input tugas baru -->
+        <div class="input-container">
+            <input type="text" id="new-task" placeholder="Tambahkan tugas baru" aria-label="Deskripsi Tugas Baru">
+            <input type="date" id="task-date" aria-label="Tanggal Tugas">
+            <select id="task-priority" aria-label="Prioritas Tugas">
+                <option value="rendah">Rendah</option>
+                <option value="sedang">Sedang</option>
+                <option value="tinggi">Tinggi</option>
+            </select>
+            <button onclick="addTask()" aria-label="Tambahkan Tugas"><i class="fas fa-plus"></i> Tambahkan</button>
+        </div>
+        <!-- Daftar tugas -->
+        <ul id="task-list" aria-live="polite"></ul>
+        <!-- Tombol untuk mengurutkan tugas berdasarkan prioritas -->
+        <button class="sort" onclick="sortTasks()">Urutkan Berdasarkan Prioritas</button>
+    </div>
+
+    <!-- Modal untuk mengedit tugas -->
+    <div id="editModal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()" aria-label="Tutup Modal">&times;</span>
+            <h2>Edit Tugas</h2>
+            <input type="text" id="edit-task-text" placeholder="Deskripsi tugas" aria-label="Edit Deskripsi Tugas">
+            <input type="date" id="edit-task-date" aria-label="Edit Tanggal Tugas">
+            <select id="edit-task-priority" aria-label="Edit Prioritas Tugas">
+                <option value="rendah">Rendah</option>
+                <option value="sedang">Sedang</option>
+                <option value="tinggi">Tinggi</option>
+            </select>
+            <button onclick="saveTaskChanges()" aria-label="Simpan Perubahan">Simpan Perubahan</button>
+        </div>
+    </div>  
+    
+    <!-- Menambahkan script JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

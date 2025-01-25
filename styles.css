@@ -1,0 +1,289 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 66.67%; /* Set the width to 2/3 of the screen */
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+input, select, button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    flex: 1;
+    min-width: 120px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button i {
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 20px; /* Increased padding for task card */
+    margin: 10px 0;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+li div.task-content {
+    background-color: #f0f0f0;
+    padding: 15px; /* Increased padding inside task card */
+    border-radius: 8px;
+    display: flex; /* Added flex layout */
+    justify-content: space-between; /* Ensure buttons align to the right */
+    align-items: center; /* Center-align items */
+    flex: 1; /* Ensure the task content takes more space */
+    margin-right: 10px;
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Ensure task details take the remaining space */
+    font-family: 'Arial', sans-serif; /* Changed font-family for better character display */
+    font-size: 16px; /* Increased font-size for better readability */
+    line-height: 1.5; /* Improved line-height for better spacing */
+    color: #333; /* Ensured proper text color */
+}
+
+.task-details span {
+    margin: 5px 0; /* Increased margin for better readability */
+}
+
+/* Adjust button styles */
+.task-content button {
+    margin-left: 10px; 
+    flex-shrink: 0; 
+}
+
+button.delete {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.delete:hover {
+    background-color: darkred;
+}
+
+button.update {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+button.update:hover {
+    background-color: #e0a800;
+}
+
+button.sort {
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button.sort:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 600px) {
+    .input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input, select, button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    button.sort {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (min-width: 601px) {
+    .input-container {
+        justify-content: space-between;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 90%;
+    }
+
+    input, select, button {
+        font-size: 14px;
+    }
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s;
+    text-align: center;
+    position: relative; /* Tambahkan ini */
+}
+
+.close {
+    color: #aaa;
+    position: absolute; /* Tambahkan ini */
+    top: 10px; /* Tambahkan ini */
+    right: 15px; /* Tambahkan ini */
+    font-size: 20px; /* Sesuaikan ukuran */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content button {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-content button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); }
+    to { transform: translateY(0); }
+}
