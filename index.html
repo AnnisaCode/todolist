@@ -1,51 +1,76 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
-    <!-- Menambahkan link stylesheet CSS. -->
+    <!-- Adding CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Menambahkan link stylesheet Font Awesome -->
+    <!-- Adding Font Awesome stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Adding Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <h1>To-Do List</h1>
-        <!-- Membuat form untuk input tugas baru -->
+        <!-- Form for adding new tasks -->
         <div class="input-container">
-            <input type="text" id="new-task" placeholder="Tambahkan tugas baru" aria-label="Deskripsi Tugas Baru">
-            <input type="date" id="task-date" aria-label="Tanggal Tugas">
-            <select id="task-priority" aria-label="Prioritas Tugas">
-                <option value="rendah">Rendah</option>
-                <option value="sedang">Sedang</option>
-                <option value="tinggi">Tinggi</option>
+            <input type="text" id="new-task" placeholder="Add new task" aria-label="Task Description">
+            <input type="date" id="task-date" aria-label="Task Date">
+            <select id="task-priority" aria-label="Task Priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
             </select>
-            <button onclick="addTask()" aria-label="Tambahkan Tugas"><i class="fas fa-plus"></i> Tambahkan</button>
+            <button onclick="addTask()" aria-label="Add Task"><i class="fas fa-plus"></i> Add Task</button>
         </div>
-        <!-- Daftar tugas -->
+
+        <!-- Priority filters -->
+        <div class="filter-container">
+            <button class="filter-btn all active" onclick="filterByPriority('all')">All</button>
+            <button class="filter-btn high" onclick="filterByPriority('high')">High Priority</button>
+            <button class="filter-btn medium" onclick="filterByPriority('medium')">Medium Priority</button>
+            <button class="filter-btn low" onclick="filterByPriority('low')">Low Priority</button>
+        </div>
+
+        <!-- Task list -->
         <ul id="task-list" aria-live="polite"></ul>
-        <!-- Tombol untuk mengurutkan tugas berdasarkan prioritas -->
-        <button class="sort" onclick="sortTasks()">Urutkan Berdasarkan Prioritas</button>
+
+        <!-- Action buttons container -->
+        <div class="actions-container">
+            <button class="sort" onclick="sortTasks()"><i class="fas fa-sort-amount-down"></i> Sort by Priority</button>
+            <button class="clear-btn" onclick="clearAllTasks()"><i class="fas fa-trash-alt"></i> Clear All</button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Annisacode</p>
+        </footer>
     </div>
 
-    <!-- Modal untuk mengedit tugas -->
+    <!-- Edit task modal -->
     <div id="editModal" class="modal" role="dialog" aria-modal="true">
         <div class="modal-content">
-            <span class="close" onclick="closeEditModal()" aria-label="Tutup Modal">&times;</span>
-            <h2>Edit Tugas</h2>
-            <input type="text" id="edit-task-text" placeholder="Deskripsi tugas" aria-label="Edit Deskripsi Tugas">
-            <input type="date" id="edit-task-date" aria-label="Edit Tanggal Tugas">
-            <select id="edit-task-priority" aria-label="Edit Prioritas Tugas">
-                <option value="rendah">Rendah</option>
-                <option value="sedang">Sedang</option>
-                <option value="tinggi">Tinggi</option>
+            <span class="close" onclick="closeEditModal()" aria-label="Close Modal">&times;</span>
+            <h2>Edit Task</h2>
+            <input type="text" id="edit-task-text" placeholder="Task description" aria-label="Edit Task Description">
+            <input type="date" id="edit-task-date" aria-label="Edit Task Date">
+            <select id="edit-task-priority" aria-label="Edit Task Priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
             </select>
-            <button onclick="saveTaskChanges()" aria-label="Simpan Perubahan">Simpan Perubahan</button>
+            <button onclick="saveTaskChanges()" aria-label="Save Changes"><i class="fas fa-save"></i> Save
+                Changes</button>
         </div>
-    </div>  
-    
-    <!-- Menambahkan script JavaScript -->
+    </div>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
+
 </html>
